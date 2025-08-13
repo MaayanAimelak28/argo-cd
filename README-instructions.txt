@@ -37,4 +37,6 @@ change the password.
 
 3. Prepare Git Repository:
 
-link to github repo:
+link to github repo: https://github.com/MaayanAimelak28/argo-cd
+
+
