@@ -1,9 +1,9 @@
 ArgoCD Assignment
 
-1. Environment Setup and install ArgoCD:
+1. Environment Setup and install Argo CD:
 
 Prerequisites:
-- Im using macOS and already installed Homebrew.
+I’m using macOS and already installed Homebrew.
 
 - Install a local Kubernetes cluster using Kind:
 brew install kind
@@ -20,19 +20,19 @@ docker --version
 Create kind cluster:
 - kind create cluster --name argocd-cluster
 - kind get clusters
-Enter to the cluster:
+Set context:
 - kubectl config use-context kind-argocd-cluster
-See the nodes:
-- kubectl get nodes -o wide --> we need to see is on ready
+View nodes:
+- kubectl get nodes -o wide --> we need to see nodes are ready
 
 Install and expose ArgoCD UI on a local port (e.g., localhost:8080):
 - kubectl create namespace argocd
-- kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml ---> thats install:
+- kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml ---> apply the official Argo CD install manifest to "argocd"
 - kubectl get namespaces
 - kubectl get pods -n argocd -o wide - we need to see that all pods are running
 - kubectl -n argocd port-forward svc/argocd-server 8080:443.  ---> get to the link: https://localhost:8080
-- kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo —> we need to translate the secret to base64. copy the password
-Login to ArgoCD UI with admin username and the copyied password.
+- kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo —> translate the secret to base64. copy the password
+Login to ArgoCD UI with admin username and the copied password.
 change the password.
 
 2. Prepare Git Repository and Deploy Application with ArgoCD:
@@ -50,4 +50,10 @@ I synced through the Argo CD GUI:
 - kubectl get application -n argocd --> SYNC STATUS: Synced
 
 3. Demonstrate GitOps:
+
+Changed the replicas to 2 and then check:
+- kubectl get application -n argocd ---> SYNC STATUS: OutOfSync
+I synced through the Argo CD GUI:
+- kubectl get application -n argocd --> SYNC STATUS: Synced
+- kubectl get pods -n web --> expect to see 2 pods
 
