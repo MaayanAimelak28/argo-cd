@@ -37,6 +37,14 @@ change the password.
 
 3. Prepare Git Repository:
 
-link to github repo: https://github.com/MaayanAimelak28/argo-cd
-
-
+Link to the Git repository: https://github.com/MaayanAimelak28/argo-cd ---> added all the files including app.yaml
+Directory structure shown via tree:
+- brew install tree
+- tree -a -I .git
+- kubectl get application -n argocd
+- mkdir tmp
+- cd tmp
+- kubectl apply -n argocd -f app.yaml
+- kubectl get application -n argocd --> SYNC STATUS: OutOfSync
+I synced through the Argo CD GUI:
+- kubectl get application -n argocd --> SYNC STATUS: Synced
