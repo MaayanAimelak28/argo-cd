@@ -1,6 +1,6 @@
 ArgoCD Assignment
 
-1. Environment Setup and install ArgoCD
+1. Environment Setup and install ArgoCD:
 
 Prerequisites:
 - Im using macOS and already installed Homebrew.
@@ -35,7 +35,7 @@ Install and expose ArgoCD UI on a local port (e.g., localhost:8080):
 Login to ArgoCD UI with admin username and the copyied password.
 change the password.
 
-3. Prepare Git Repository:
+2. Prepare Git Repository and Deploy Application with ArgoCD:
 
 Link to the Git repository: https://github.com/MaayanAimelak28/argo-cd ---> added all the files including app.yaml
 Directory structure shown via tree:
@@ -48,3 +48,6 @@ Directory structure shown via tree:
 - kubectl get application -n argocd --> SYNC STATUS: OutOfSync
 I synced through the Argo CD GUI:
 - kubectl get application -n argocd --> SYNC STATUS: Synced
+
+3. Demonstrate GitOps:
+
